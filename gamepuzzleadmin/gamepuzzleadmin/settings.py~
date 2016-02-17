@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Django settings for gamepuzzleadmin project.
 
@@ -82,7 +81,7 @@ DATABASES = {
         'NAME': 'puzzclub',
         'USER':'testuser2',
         'PASSWORD': 'zSmZtPWySRur2mJx',
-        'HOST': 'localhost',
+        'HOST': '192.168.10.71',
         'PORT': '3306',
         'default-character-set': 'utf-8',
     }
@@ -125,5 +124,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL =  '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_URL = '/static/'
