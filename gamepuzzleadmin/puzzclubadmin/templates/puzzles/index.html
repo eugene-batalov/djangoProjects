@@ -1,0 +1,9 @@
+{% if latest_puzzles_list %}
+    <ul>
+    {% for puzzle in latest_puzzles_list %}
+        <li><a href="{% url 'puzzles:detail' puzzle.puzzleid %}">{{ puzzle.task }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No puzzles are available.</p>
+{% endif %}

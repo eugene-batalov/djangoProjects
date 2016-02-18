@@ -160,7 +160,7 @@ class Puzzles(models.Model):
     complexity = models.ForeignKey(Complexity, models.DO_NOTHING, db_column='complexity')
     task = models.CharField(max_length=50)
     answer = models.CharField(max_length=50)
-    icon = models.ImageField()
+    icon = models.ImageField(upload_to='images/')
     def __str__(self):
         return str(self.puzzleid)
         
