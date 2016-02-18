@@ -13,14 +13,16 @@ from django.db import models
 
 class Access(models.Model):
     userid = models.ForeignKey('Users', models.DO_NOTHING, db_column='userid')
-    puzzle = models.IntegerField() #models.ForeignKey('Puzzles', models.DO_NOTHING, db_column='puzzle')
+    puzzle = models.IntegerField()
     downloaddt = models.DateTimeField(blank=True, null=True)
     answerdt = models.DateTimeField(blank=True, null=True)
     ipaddress = models.TextField(blank=True, null=True)
     useragent = models.TextField(blank=True, null=True)
     nicetries = models.IntegerField()
     accessid = models.AutoField(primary_key=True)
-
+    def __str__(self):
+        return str(self.accessid)    
+    
     class Meta:
         managed = False
         db_table = 'Access'
@@ -32,7 +34,9 @@ class Complexity(models.Model):
     level = models.IntegerField()
     verticalelements = models.IntegerField()
     zone2points = models.IntegerField()
-
+    def __str__(self):
+        return str(self.complexityid)
+        
     class Meta:
         managed = False
         db_table = 'Complexity'
@@ -42,6 +46,8 @@ class Countries(models.Model):
     countryid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=45)
+    def __str__(self):
+        return str(self.name)
 
     class Meta:
         managed = False
@@ -51,6 +57,8 @@ class Countries(models.Model):
 class Groups(models.Model):
     groupid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
+    def __str__(self):
+        return str(self.name)
 
     class Meta:
         managed = False
@@ -61,7 +69,9 @@ class Languages(models.Model):
     languageid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=45)
-
+    def __str__(self):
+        return str(self.name)
+        
     class Meta:
         managed = False
         db_table = 'Languages'
@@ -74,7 +84,9 @@ class Levelpoints(models.Model):
     place3points = models.IntegerField(blank=True, null=True)
     place4points = models.IntegerField(blank=True, null=True)
     place5points = models.IntegerField(blank=True, null=True)
-
+    def __str__(self):
+        return str(self.levelpointsid)
+        
     class Meta:
         managed = False
         db_table = 'Levelpoints'
@@ -86,7 +98,9 @@ class Localization(models.Model):
     english = models.CharField(db_column='English', max_length=1000)  # Field name made lowercase.
     german = models.CharField(db_column='German', max_length=1000)  # Field name made lowercase.
     french = models.CharField(db_column='French', max_length=1000)  # Field name made lowercase.
-
+    def __str__(self):
+        return str(self.keyword)
+        
     class Meta:
         managed = False
         db_table = 'Localization'
@@ -98,7 +112,9 @@ class News(models.Model):
     header = models.CharField(max_length=100)
     img = models.ImageField(blank=True, null=True)
     content = models.TextField(blank=True, null=True)
-
+    def __str__(self):
+        return str(self.content)
+        
     class Meta:
         managed = False
         db_table = 'News'
@@ -114,7 +130,9 @@ class Payments(models.Model):
     zone2periodstart = models.DateField(blank=True, null=True)
     zone2periodend = models.DateField(blank=True, null=True)
     zone3tournament = models.ForeignKey('Tournaments', models.DO_NOTHING, db_column='zone3tournament', blank=True, null=True)
-
+    def __str__(self):
+        return str(self.paymentid)
+        
     class Meta:
         managed = False
         db_table = 'Payments'
@@ -125,7 +143,9 @@ class Pictures(models.Model):
     width = models.IntegerField()
     height = models.IntegerField()
     picturedata = models.ImageField()
-
+    def __str__(self):
+        return str(self.pictureid)
+        
     class Meta:
         managed = False
         db_table = 'Pictures'
@@ -141,7 +161,9 @@ class Puzzles(models.Model):
     task = models.CharField(max_length=50)
     answer = models.CharField(max_length=50)
     icon = models.ImageField()
-
+    def __str__(self):
+        return str(self.puzzleid)
+        
     class Meta:
         managed = False
         db_table = 'Puzzles'
@@ -161,7 +183,9 @@ class Tournaments(models.Model):
     place4user = models.ForeignKey('Users', models.DO_NOTHING, db_column='place4user', blank=True, null=True, related_name='place4user')
     place5user = models.ForeignKey('Users', models.DO_NOTHING, db_column='place5user', blank=True, null=True, related_name='place5user')
     notificationsent = models.CharField(max_length=1, blank=True, null=True)
-
+    def __str__(self):
+        return str(self.tournamentid)
+        
     class Meta:
         managed = False
         db_table = 'Tournaments'
@@ -184,7 +208,9 @@ class Users(models.Model):
     zone3rating = models.IntegerField(blank=True, null=True)
     sendnews = models.CharField(max_length=1, blank=True, null=True)
     emailconfirmed = models.CharField(max_length=50)
-
+    def __str__(self):
+        return str(self.name)
+        
     class Meta:
         managed = False
         db_table = 'Users'

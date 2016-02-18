@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'puzzclub',
         'USER':'testuser2',
         'PASSWORD': 'zSmZtPWySRur2mJx',
-        'HOST': 'localhost',
+        'HOST': '192.168.10.85',
         'PORT': '3306',
         'default-character-set': 'utf-8',
     }
